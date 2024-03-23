@@ -1,0 +1,3 @@
+now fix some issues in model and add comments like the name in comments will come from signup name means 
+when user is signup or login then from their he has enter the name while signing up that name will comme 
+here 
