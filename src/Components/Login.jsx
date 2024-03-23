@@ -29,7 +29,7 @@ const Login = () => {
             const result = await res.json();
             if (res.ok) {
                 localStorage.setItem('token', result.AuthenticationToken);
-                alert('Login Successfully');
+                alert('You have Login Successfully');
                 setTimeout(() => {
                     window.location.href = 'http://localhost:5173'
                 }, 1000);
