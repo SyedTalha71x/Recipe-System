@@ -6,6 +6,7 @@ const RecipeState = (props) => {
     const BASE_URL = 'http://localhost:3001'
     const [recipes, setrecipes] = useState([])
     const [userrecipes, setuserrecipes] = useState([])
+    const [searchResults, setSearchResults] = useState([]);
 
     const fetchallrecipes = async () => {
         let url = `${BASE_URL}/api/recipe/fetchallrecipiesdefault`;
@@ -114,14 +115,29 @@ const RecipeState = (props) => {
         }
     }
 
-    const addComments = async () => {
+    // const fetchByCookTime = async (cookTime) => {
+    //     try {
+    //         const res = await fetch(`${BASE_URL}/api/recipe/SearchRecipebycookTime/${cookTime}`, {
+    //             method: 'GET',
+    //             headers: {
+    //                 'Content-Type': 'application/json'
+    //             }
+    //         });
+    //         const data = await res.json();
+    //         console.log(searchResults);
+    //         setSearchResults(data);
+    //     } catch (error) {
+    //         console.error('Error fetching recipes by cook time:', error);
+    //     }
+    // }
 
-    }
 
 
 
     return (
-        <RecipeContext.Provider value={{ recipes, fetchallrecipes, AddRecipes, userrecipes, fetchallrecipesbyuser, Deleterecipe, EditRecipe }}>
+        <RecipeContext.Provider value={{
+            recipes, fetchallrecipes, AddRecipes, userrecipes, fetchallrecipesbyuser, Deleterecipe, EditRecipe
+        }}>
             {props.children}
         </RecipeContext.Provider>
     )

@@ -1,6 +1,7 @@
 const Recipe = require('../Models/Recipe');
 const Review = require('../Models/CustomerReview');
 const Comments = require('../Models/UserComments');
+const User = require('../Models/User');
 const Fetchuser = require('../Middleware/adminuser');
 const express = require('express');
 const router = express.Router();
@@ -187,8 +188,8 @@ router.get('/fetchReviewonRating/:recipe_ID', async (req, res) => {
     }
 })
 
-router.post('/addcomment/:recipe_ID', async (req, res) => {
-    const { name, text, date } = req.body;
+router.post('/addcomment/:recipe_ID', Fetchuser, async (req, res) => {
+    const { text, date } = req.body;
     const recipe_ID = req.params.recipe_ID;
 
     try {
@@ -196,9 +197,10 @@ router.post('/addcomment/:recipe_ID', async (req, res) => {
         if (!recipe) {
             return res.status(404).json({ message: 'Recipe not found' });
         }
+        const name = req.user.name;
         const parseddate = date || Date.now();
         const addcomment = new Comments({
-            name,
+            name: name,
             text,
             date: parseddate,
             recipe_id: recipe_ID,

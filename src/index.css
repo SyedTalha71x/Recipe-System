@@ -5,3 +5,22 @@
 /* body {
     overflow: hidden;
 } */
+
+.home {
+    position: relative;
+    height: 100%;
+    width: 100%;
+}
+
+.home::before {
+    content: '';
+    background-color: rgb(171, 163, 176);
+    object-fit: cover;
+    opacity: 0.9;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+}
